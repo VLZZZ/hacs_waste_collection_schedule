@@ -123,8 +123,8 @@ class Source:
 
         if (
             len(calendar_result) <= 0
-            or "harmonogramy" not in calendar_result[0]
-            or len(calendar_result[0]["harmonogramy"]) <= 0
+            or "harmonogramyZ" not in calendar_result[0]
+            or len(calendar_result[0]["harmonogramyZ"]) <= 0
         ):
             raise SourceParseError(
                 "Expected list of dates from calendar search, got empty or missing list"
@@ -133,7 +133,7 @@ class Source:
         entries = []
 
         for result in calendar_result:
-            for entry in result["harmonogramy"]:
+            for entry in result["harmonogramyZ"]:
                 if entry["data"]:
                     original_type = entry["frakcja"]["id_frakcja"]
                     waste_type = NAME_MAP.get(original_type, original_type)
